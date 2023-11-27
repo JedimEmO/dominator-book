@@ -1,0 +1,12 @@
+[package]
+name = "doc-imports"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dominator.workspace = true
+futures-signals.workspace = true
+log.workspace = true
+wasm-bindgen.workspace = true
