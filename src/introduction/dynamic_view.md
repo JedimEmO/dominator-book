@@ -41,19 +41,27 @@ Don't worry, we will cover signals in more detail later, as they are crucial to 
 This is the simplest of the mutable types.
 It is a simple container, providing get/set methods for accessing the current held value directly.
 
-> **Note:** If your type `T` is **Copy**, the `Mutable<T>` type will implement `.get()` and `.set()`. 
-If `T` is **Clone**, there will be `.get_cloned()` and `.set_cloned()` instead
+> **Note:** If your type `T` is **Copy**, the `Mutable<T>` type will implement `.get()`. 
+If `T` is **Clone**, there will be `.get_cloned()` instead
 
 More importantly, `Mutable<T>` gives us a few ways to acquire a signal of the values it will hold.
 
-The simplest signal we can get is when our type is `Copy`.
-In this case, we can create a signal that copies the value forward like so:
+The simplest signal we can get is when our type is `Copy` or `Clone`.
+In this case, we can create a signal that copies the value forward like so (for cloning, we use the `.signal_cloned()`:
 
 ```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/dynamic_view.rs:simple_mutable_signal}}
 ```
 
-Now that we have a signal for all future values of `x`, we can write a function that should run on new values:
+The last type of signal we can get from `Mutable` is the `.signal_ref()`.
+This allows us to provide a mapping lambda that will transform a reference to the new value and output that as the signalled value.
+In this example, we simply output a copy of the new value:
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/introduction/dynamic_view.rs:simple_mutable_signal_ref}}
+```
+
+Now that we have a signal for all future values of `x`, we can write a function that should run when we get new values:
 
 ```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/dynamic_view.rs:simple_mutable_signal_for_each}}

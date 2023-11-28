@@ -9,15 +9,28 @@ fn simple_mutable_signal() {
 // ANCHOR: simple_mutable_signal
 let x = Mutable::new(42_u32);
 let x_signal_copied = x.signal();
+let x_signal_cloned = x.signal_cloned();
 // ANCHOR_END: simple_mutable_signal
+}
+
+#[rustfmt::skip]
+fn simple_mutable_signal_ref() {
+// ANCHOR: simple_mutable_signal_ref
+    let x = Mutable::new(42_u32);
+    let x_signal_ref = x.signal_ref(|new_value: &u32| {
+        *new_value
+    });
+// ANCHOR_END: simple_mutable_signal_ref
 }
 
 // ANCHOR: simple_mutable_signal_for_each
 async fn log_x(x_signal: impl Signal<Item = u32>) {
-    x_signal.for_each(|v| {
-        info!("Got new x: {}", v);
-        async {}
-    });
+    x_signal
+        .for_each(|v| {
+            info!("Got new x: {}", v);
+            async {}
+        })
+        .await;
 }
 // ANCHOR_END: simple_mutable_signal_for_each
 
