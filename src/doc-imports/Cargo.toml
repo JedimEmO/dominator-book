@@ -10,3 +10,4 @@ dominator.workspace = true
 futures-signals.workspace = true
 log.workspace = true
 wasm-bindgen.workspace = true
+web-sys.workspace = true

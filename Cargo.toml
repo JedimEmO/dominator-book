@@ -4,6 +4,7 @@ dominator = "0.5.34"
 futures-signals = "0.3.33"
 log = "0.4.20"
 wasm-bindgen = "0.2.89"
+web-sys = { version = "0.3", features = ["HtmlElement"] }
 
 [workspace]
 
