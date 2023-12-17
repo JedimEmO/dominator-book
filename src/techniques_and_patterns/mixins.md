@@ -43,6 +43,11 @@ We can instead create a higher order function, which produces a mixin that we ca
 As the warning above states, it can be risky to provide full access to your internal builder.
 This can allow the user to break invariants assumed to be in place for your internal implementation, so use mixins a bit carefully.
 
+### Use fragments
+
+If what we wish to do is to let the user inject one or more children into a section of our components DOM tree, we may wish to use [fragments](fragments.md) instead.
+
+### More precise arguments
 It's a good idea to consider more targeted callback functions and signals.
 If you want the user to be allowed to provide a class signal, then simply accept the class signal:
 
@@ -51,3 +56,13 @@ If you want the user to be allowed to provide a class signal, then simply accept
 ```
 
 This lets the consumer do a more controlled customization of your component, and doesn't risk the issues associated with mixins.
+
+
+### Builder wrapper
+
+Alternatively, we can wrap the builder in a struct to expose only certain operations:
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/techniques_and_patterns/mixins.rs:builder_wrapper}}
+```
+

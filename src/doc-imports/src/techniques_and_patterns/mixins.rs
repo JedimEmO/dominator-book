@@ -69,3 +69,29 @@ fn component_with_class_signal(active_class_signal: impl Signal<Item = bool> + '
     })
 }
 // ANCHOR_END: class_signal
+
+// ANCHOR: builder_wrapper
+pub struct MyBuilderWrapper {
+    inner: DomBuilder<HtmlElement>,
+}
+
+impl MyBuilderWrapper {
+    pub fn class(self, class: impl AsRef<str>) -> Self {
+        Self {
+            inner: self.inner.class(class.as_ref()),
+        }
+    }
+
+    fn new(inner: DomBuilder<HtmlElement>) -> Self {
+        Self { inner }
+    }
+}
+
+pub fn my_wrapped_mixin(wrapped_mixin: impl FnOnce(MyBuilderWrapper) -> MyBuilderWrapper) -> Dom {
+    html!("div", {
+        .apply(|builder| {
+            wrapped_mixin(MyBuilderWrapper::new(builder)).inner
+        })
+    })
+}
+// ANCHOR_END: builder_wrapper

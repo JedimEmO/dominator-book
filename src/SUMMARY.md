@@ -11,3 +11,4 @@
 # Techniques and Patterns
 
 - [Mixins](techniques_and_patterns/mixins.md)
+- [Fragments](techniques_and_patterns/fragments.md)
