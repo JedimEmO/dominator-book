@@ -1,6 +1,6 @@
 use dominator::events::{MouseEnter, MouseLeave};
 use dominator::{clone, html, Dom, DomBuilder};
-use futures_signals::signal::{Mutable, MutableSignal, SignalExt};
+use futures_signals::signal::{Mutable, MutableSignal, Signal, SignalExt};
 use web_sys::HtmlElement;
 
 // ANCHOR: component_with_mixin
@@ -61,3 +61,11 @@ fn using_hover_signal_mixin() -> Dom {
     }))
 }
 // ANCHOR_END: using_hover_signal_mixin
+
+// ANCHOR: class_signal
+fn component_with_class_signal(active_class_signal: impl Signal<Item = bool> + 'static) -> Dom {
+    html!("div", {
+        .class_signal("active", active_class_signal)
+    })
+}
+// ANCHOR_END: class_signal
