@@ -1,6 +1,6 @@
 # Mixins
 
-*Mixins* is a pattern that can be used to allow the user access to its own builder.
+*Mixins* is a pattern that can be used to allow the user access to a components builder.
 For instance, we may want to give the user a way of setting the ID of our component, or to attach some custom event handler to it.
 
 Here's a very basic example.
