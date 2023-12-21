@@ -12,3 +12,4 @@
 
 - [Mixins](techniques_and_patterns/mixins.md)
 - [Fragments](techniques_and_patterns/fragments.md)
+- [Routing](techniques_and_patterns/routing.md)

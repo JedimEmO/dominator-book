@@ -9,5 +9,6 @@ edition = "2021"
 dominator.workspace = true
 futures-signals.workspace = true
 log.workspace = true
+regex.workspace = true
 wasm-bindgen.workspace = true
 web-sys.workspace = true
