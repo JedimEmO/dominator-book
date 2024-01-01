@@ -69,3 +69,19 @@ Now we can put it all together to render a strongly typed, routed application:
 Notice we use the `link!` macro provided by tokio for a shorthand.
 This creates an `<a>` element with on click set correctly for us!
  
+## Generalized router
+
+We can generalize and simplify the route handling a bit.
+For instance, we can build a generic router based on the `matchit` crate (which is use din the popular backend library `axum`).
+
+It is essentially a set of routes, associated with a lambda function to extract the matched parameters and translate them into our desired route value (typically our enum from up-top)
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/techniques_and_patterns/routing.rs:generalized_router}}
+```
+
+This makes it super easy to wire our application routes using lambdas:
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/techniques_and_patterns/routing.rs:matchit_routing}}
+```
