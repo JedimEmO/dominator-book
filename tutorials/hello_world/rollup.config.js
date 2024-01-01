@@ -17,7 +17,7 @@ export default {
     plugins: [
         rust({
             serverPath: "js/",
-            debug: false
+            debug: true
         }),
         is_watch && serve({
             contentBase: "dist",
