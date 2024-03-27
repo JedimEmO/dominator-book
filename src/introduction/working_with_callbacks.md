@@ -9,6 +9,12 @@ With dominator, we can easily do this with regular `'static` rust closures:
 {{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click}}
 ```
 
+Here's an example of using this:
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click_usage}}
+```
+
 Note that any callback handed over to the JS runtime must have a `'static` lifetime.
 This means it must capture everything that isn't a `'static` lifetime reference by value!
 
