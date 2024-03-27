@@ -22,8 +22,7 @@ pub fn use_onclick() -> Dom {
         })))
     })
 }
-
-// ANCHOR_end: on_click_usage
+// ANCHOR_END: on_click_usage
 
 // ANCHOR: on_click_factory
 pub fn my_shared_button_factory<
@@ -44,4 +43,4 @@ pub fn my_shared_button_factory<
         }))
     })
 }
-// ANCHOR_END: // ANCHOR: on_click_factory
+// ANCHOR_END: on_click_factory
