@@ -7,6 +7,7 @@
 - [Dependencies](introduction/dependencies.md)
 - [Hello, world!](introduction/hello_world.md)
 - [A dynamic view](introduction/dynamic_view.md)
+- [Working with callbacks](introduction/working_with_callbacks.md)
 
 # Techniques and Patterns
 
