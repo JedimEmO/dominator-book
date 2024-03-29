@@ -28,10 +28,36 @@ Note that any callback handed over to the JS runtime must have a `'static` lifet
 This means it must capture everything that isn't a `'static` lifetime reference by value!
 
 Sometimes, we need to provide a callback function that will be handed over to multiple callers.
-One way to do this, is to provide a factory closure:
+There are a few ways to do this, depending on what type of closure you wish to use.
+
+### `Fn` closure
+The simplest is to use an `Fn` closure, which we can wrap in an `Arc` internally, and hand over to our event handlers:
 
 ```rust,no_run,noplayground
-{{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click_factory}}
+{{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click_factory_fn}}
+```
+
+### Cloneable closure
+
+If we need to use an `FnMut` closure, we can constrain the closure to be `Clone`.
+This necessary, since the `Arc` trick above will not allow us to access the closure as mutable within the `Arc`.
+
+A closure implements `Clone` as long as all of its captures variables also are `Clone`.
+Indeed, closures are also `Copy` as long as all captured members are copy.
+
+Since we know the closure is `Clone`, we can easily clone and move into the event handlers as needed:
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click_factory_fn_mut}}
+```
+
+### Closure factory
+
+And finally, if we for some reason our `FnMut` closure cannot be `Clone`, we can adopt a factory pattern.
+This is simply a wrapping lambda, which returns a new closure for each invocation:
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click_factory_fn_mut_factory}}
 ```
 
 
