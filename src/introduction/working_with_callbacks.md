@@ -27,6 +27,8 @@ Here's an example of using our button:
 Note that any callback handed over to the JS runtime must have a `'static` lifetime.
 This means it must capture everything that isn't a `'static` lifetime reference by value!
 
+## Reusing closures 
+
 Sometimes, we need to provide a callback function that will be handed over to multiple callers.
 There are a few ways to do this, depending on what type of closure you wish to use.
 
@@ -53,7 +55,7 @@ Since we know the closure is `Clone`, we can easily clone and move into the even
 
 ### Closure factory
 
-And finally, if we for some reason our `FnMut` closure cannot be `Clone`, we can adopt a factory pattern.
+And finally, if for some reason our `FnMut` closure cannot be `Clone`, we can adopt a factory pattern.
 This is simply a wrapping lambda, which returns a new closure for each invocation:
 
 ```rust,no_run,noplayground
