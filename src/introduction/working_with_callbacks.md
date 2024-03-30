@@ -39,15 +39,13 @@ The simplest is to use an `Fn` closure, which we can wrap in an `Arc` internally
 {{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click_factory_fn}}
 ```
 
-### Cloneable closure
+### FnMut closure
 
-If we need to use an `FnMut` closure, we can constrain the closure to be `Clone`.
-This necessary, since the `Arc` trick above will not allow us to access the closure as mutable within the `Arc`.
+If we need to use an `FnMut` closure, it's not sufficient to wrap the closure in an `Arc`.
+The problem is that to invoke an `FnMut`, you need to own a mutable reference to it.
 
-A closure implements `Clone` as long as all of its captures variables also are `Clone`.
-Indeed, closures are also `Copy` as long as all captured members are copy.
-
-Since we know the closure is `Clone`, we can easily clone and move into the event handlers as needed:
+We can use the same approach as for `Fn`, but we need to wrap the closure in a mutex as well as an `Arc`.
+This allows us to acquire a mut borrow for the closure when we need to invoke it!
 
 ```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click_factory_fn_mut}}

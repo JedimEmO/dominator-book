@@ -53,6 +53,7 @@ pub fn my_shared_button_factory(
 
 #[rustfmt::skip]
 mod oc_fn_mut {
+    use std::sync::{Arc, Mutex};
     use dominator::{html, Dom, clone, events};
     use futures_signals::signal::Mutable;
     use futures_signals::signal::SignalExt;
@@ -60,15 +61,16 @@ mod oc_fn_mut {
 // ANCHOR: on_click_factory_fn_mut
 pub fn my_shared_button_factory(
     val: Mutable<i32>,
-    mut on_click: impl (FnMut() -> ()) + Clone + 'static,
+    on_click: impl (FnMut() -> ()) + 'static,
 ) -> Dom {
+    let on_click = Arc::new(Mutex::new(on_click));
     html!("div", {
         .child_signal(val.signal().map(clone!(on_click => move |v| {
             let mut on_click = on_click.clone();
             
             Some(html!("button", {
                 .event(move |_: events::Click| {
-                    on_click();
+                    on_click.lock().unwrap()();
                 })
             }))
         })))
