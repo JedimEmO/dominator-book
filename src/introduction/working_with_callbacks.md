@@ -1,9 +1,9 @@
 # Working with callbacks
 
 When making shared components, we usually want to customize certain behaviours of the component.
-The common way to solve this, is with callbacks.
+The common way to solve this, is by allowing the user of the component to provide callbacks that we trigger under specific circumstances.
 
-With dominator, we can easily do this with regular `'static` rust closures:
+With dominator, we can easily do this with regular rust closures:
 
 ```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click}}
@@ -61,12 +61,13 @@ This is simply a wrapping lambda, which returns a new closure for each invocatio
 ```
 
 
-### Dealing with 'static 
+### Dealing with 'static constraints for state management
 
-What this practically means is that if we want to connect our events to the rest of our application in any meaningful way, we have two options:
+Since all callbacks we will be dealing with are constrained to capturing by `'static`, we have to make some considerations when designing our application state management.
+What this practically means is th   at if we want to connect our events to the rest of our application in any meaningful way, we have two options:
 
 - Create static references to the application state by `Box::leak()` and share `&'static` references to the relevant parts
-- Keep state inside cloneable pointer types, and capture clones by values
+- Keep state inside cloneable pointer types (usually `Arc`), and capture by move
 
 Both of these are valid approaches, and typically a mix is good.
 Again, the **Patterns** chapter will cover more of this.

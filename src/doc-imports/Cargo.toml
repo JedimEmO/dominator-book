@@ -12,6 +12,8 @@ log.workspace = true
 matchit.workspace = true
 regex.workspace = true
 wasm-bindgen.workspace = true
+wasm-bindgen-futures.workspace = true
 web-sys.workspace = true
 uuid = { version = "1.6.1", features = ["v4"] }
 getrandom = { version = "0.2.15", features = ["js"] }
+anyhow = "1.0.86"

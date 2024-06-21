@@ -57,8 +57,8 @@ This sounds problematic, but as we will discuss later, using `futures-signals` i
 
 ## The rest of the tutorials
 
-To avoid having too many tutorial applications (and their corresponding node_modules occupying ludicrous amounts of drive space), the rest of the tutorial code will reside in the 'tutorials/all_the_others' folder.
+To avoid having too many tutorial applications (and their corresponding node_modules occupying ludicrous amounts of drive space), the rest of the tutorial code will reside in the `tutorials/all_the_others` folder.
 
-Inside of this application there is a sub-folder named 'tutorials', which in turn contains one sub folder for each tutorial we will be referencing.
+Inside of this application there is a sub-folder named `tutorials`, which in turn contains one sub folder for each tutorial we will be referencing.
 
 When you run this application, the web page contains a tabbed view of all the tutorials, so you can switch between them on the fly.

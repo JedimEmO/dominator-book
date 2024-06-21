@@ -92,10 +92,10 @@ You can find this example in the `tutorials/all_the_rest` application if you wis
 {{#include ../../tutorials/all_of_the_others/src/tutorials/dynamic_view.rs:counter}}
 ```
 
-There are a few key concepts to discuss here.
+If you are used to a more object-oriented way of programming, it may seem strange how we declare our component as a regular rust function.
+We will discuss a few different approaches and patterns in the patterns chapter.
+For now, don't worry; if you prefer using structs with associated methods that is completely fine and doable!
 
-The first is to notice how we declare our component as a regular rust function.
-We will discuss a few different approaches and patterns in the **Patterns** chapter.
 For now, recognize that this function returns a single Dom node, which is allowed to mutate the `counter_value` argument.
 One should be strict when declaring function arguments (in general, not just with dominator), so that the signature clearly describes the contract with the caller.
 If we do not want to allow the function to mutate our value, we can either accept a `ReadOnlyMutable<u32>` or an `impl Signal<Item=u32>`.
