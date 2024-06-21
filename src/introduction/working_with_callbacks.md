@@ -61,7 +61,7 @@ This is simply a wrapping lambda, which returns a new closure for each invocatio
 ```
 
 
-### Dealing with &'static
+### Dealing with 'static 
 
 What this practically means is that if we want to connect our events to the rest of our application in any meaningful way, we have two options:
 

@@ -34,26 +34,6 @@ async fn log_x(x_signal: impl Signal<Item = u32>) {
 }
 // ANCHOR_END: simple_mutable_signal_for_each
 
-// ANCHOR: counter
-fn counter(counter_value: Mutable<u32>) -> Dom {
-    let counter_text_signal = counter_value
-        .signal()
-        .map(|new_value| format!("The counter value is {}", new_value));
-
-    html!("div", {
-        .child(html!("h1", {
-            .text_signal(counter_text_signal)
-        }))
-        .child(html!("button", {
-            .text("Increase!")
-            .event(clone!(counter_value => move |_: events::Click| {
-                counter_value.set(counter_value.get() + 1);
-            }))
-        }))
-    })
-}
-// ANCHOR_END: counter
-
 #[rustfmt::skip]
 async fn clone_example() {
 // ANCHOR: clone

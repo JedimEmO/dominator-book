@@ -1,0 +1,23 @@
+html,body {
+  height: 100%;
+  margin: 0;
+}
+
+#tutorial-app {
+  & > header > div {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 70px 1fr;
+
+    & > h1 {
+      grid-row: 1;
+      padding-left: 8px;
+    }
+
+    & > .dmat-tabs {
+      grid-row: 2;
+
+      align-content: end;
+    }
+  }
+}

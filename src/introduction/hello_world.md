@@ -11,7 +11,7 @@ This means we can use a fairly recognisable rust project structure.
 To build the application for the browser, there are a few options available.
 Throughout this tutorial, we will use `rollup` with the `@wasm-tool/rollup-plugin-rust`.
 
-We will not cover the details of setting up a project with rollup here, but you can take a look at the `book/tutorials/hello-world` project for a simple example.
+We will not cover the details of setting up a project with rollup here, but you can take a look at the `tutorials/hello-world` project for a simple example.
 Feel free to modify the `rollup.config.js` file to suit your needs.
 
 In the dist folder, we have the `index.html` file.
@@ -54,3 +54,11 @@ This means we can perform any action on the DOM (and the rest of the browser env
 
 We also need to be aware that there is no VDOM, diffing or other helper in place to alleviate dom updates/style recalculations.
 This sounds problematic, but as we will discuss later, using `futures-signals` idiomatically actually makes it super easy to make near-optimal DOM updates! 
+
+## The rest of the tutorials
+
+To avoid having too many tutorial applications (and their corresponding node_modules occupying ludicrous amounts of drive space), the rest of the tutorial code will reside in the 'tutorials/all_the_others' folder.
+
+Inside of this application there is a sub-folder named 'tutorials', which in turn contains one sub folder for each tutorial we will be referencing.
+
+When you run this application, the web page contains a tabbed view of all the tutorials, so you can switch between them on the fly.

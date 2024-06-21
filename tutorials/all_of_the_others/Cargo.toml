@@ -1,17 +1,19 @@
 [package]
-name = "doc-imports"
+name = "all_of_the_others"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib"]
 
 [dependencies]
+doc-imports = { path = "../../src/doc-imports" }
+
+dmat-components.workspace = true
 dominator.workspace = true
 futures-signals.workspace = true
-log.workspace = true
-matchit.workspace = true
-regex.workspace = true
 wasm-bindgen.workspace = true
-web-sys.workspace = true
-uuid = { version = "1.6.1", features = ["v4"] }
-getrandom = { version = "0.2.15", features = ["js"] }
+
+[build-dependencies]
+dmat-components-style.workspace = true

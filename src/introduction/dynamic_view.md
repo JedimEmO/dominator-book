@@ -86,8 +86,10 @@ The dynamic counterpart normally has the suffix `_signal` or `_signal_vec` to co
 
 In our case, we know that we want to make a span with a text that changes according to a counter, so we use the `.text_signal()` and a mapping 
 
+You can find this example in the `tutorials/all_the_rest` application if you wish to see it live!
+
 ```rust,no_run,noplayground
-{{#include ../doc-imports/src/introduction/dynamic_view.rs:counter}}
+{{#include ../../tutorials/all_of_the_others/src/tutorials/dynamic_view.rs:counter}}
 ```
 
 There are a few key concepts to discuss here.

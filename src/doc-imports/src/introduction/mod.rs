@@ -1,3 +1,3 @@
-mod dynamic_view;
-mod hello_world;
-mod working_with_callbacks;
+pub mod dynamic_view;
+pub mod hello_world;
+pub mod working_with_callbacks;
