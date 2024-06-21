@@ -8,5 +8,5 @@ title = "Performant web applications with DOMINATOR and DMat"
 description = "Make highly performant web applications with Rust and DOMINATOR"
 
 [output.html]
-git-repository-url = "https://github.com/Pauan/rust-dominator"
+git-repository-url = "https://github.com/JedimEmO/dominator-book"
 
