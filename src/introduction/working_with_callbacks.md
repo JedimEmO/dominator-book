@@ -60,7 +60,6 @@ This is simply a wrapping lambda, which returns a new closure for each invocatio
 {{#include ../doc-imports/src/introduction/working_with_callbacks.rs:on_click_factory_fn_mut_factory}}
 ```
 
-
 ### Dealing with 'static constraints for state management
 
 Since all callbacks we will be dealing with are constrained to capturing by `'static`, we have to make some considerations when designing our application state management.

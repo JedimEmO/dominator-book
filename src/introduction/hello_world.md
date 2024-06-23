@@ -42,6 +42,8 @@ The first parameter is the tag name to construct.
 
 The second parameter is a list of chained method calls that will be applied to the `DomBuilder<HtmlElement>` instance used to construct the node.
 Don't worry about understanding all the details of this just yet!
+Let's just agree on a name for referencing the block containing chained method calls; the `method_block`.
+
 For now, be content to know that calling `.text()` within the block we pass to the macro will create a text node with the provided static text content!
 
 ## How it works
