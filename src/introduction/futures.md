@@ -15,7 +15,7 @@ Luckily, rust has a very good async model, and DOMINATOR lets us use it from our
 
 First of all, let's assume we have an interface to our backend with an async method providing us some item information:
 
-```rust
+```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/futures.rs:trait}}
 ```
 
@@ -27,7 +27,7 @@ We then make the request, and whenever the response returns we will populate the
 
 This lets us render the view as a simple signal mapping over the optional value:
 
-```rust
+```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/futures.rs:renderer}}
 ```
 
@@ -35,7 +35,7 @@ But we need to drive the future returned by our function somehow!
 
 Luckily, dominator lets us associate futures with our elements, and will make sure they are polled.
 
-```rust
+```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/futures.rs:component}}
 ```
 
@@ -49,6 +49,6 @@ Sometimes we have to spawn tasks that doesn't exist at the construction of our e
 
 For this, we will have to use the `wasm-bindgen-futures` crate, which provides a handy `spawn_local` function!
 
-```rust
+```rust,no_run,noplayground 
 {{#include ../doc-imports/src/introduction/futures.rs:spawn_local}}
 ```

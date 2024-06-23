@@ -8,7 +8,7 @@ If we wish to gain access to the underlying DOM node, we have to use the `with_n
 
 With this, we gain direct access to all methods on the actual DOM node.
 
-```rust
+```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/advanced_element_construction.rs:with_node_example}}
 ```
 
@@ -28,19 +28,20 @@ Luckily, the `html!` macro makes this trivial to do from **DOMINATOR**!
 
 Take a look at this multinode example:
 
-```rust
+```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/advanced_element_construction.rs:multinode}}
 ```
 
 As you can see in the method block of the macro, we simply make multiple calls to the various child-inserting methods.
 This particular example expands into the following DOM structure:
 
-```rust
+```html,no_run,noplayground
 {{#include ../doc-imports/src/introduction/advanced_element_construction.rs:multinode_expanded}}
 ```
 
 This even works with `fragments` and `children_vec`, which may expand into several dynamically allocated children:
+(To read more about fragments and how they work, see the [fragments](../techniques_and_patterns/fragments.md))
 
-```rust
+```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/advanced_element_construction.rs:multinode_multichild}}
 ```
