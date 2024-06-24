@@ -80,7 +80,10 @@ It is essentially a set of routes, associated with a lambda function to extract 
 {{#include ../doc-imports/src/techniques_and_patterns/routing.rs:generalized_router}}
 ```
 
-This makes it super easy to wire our application routes using lambdas:
+This makes it super easy to wire our application routes using lambdas.
+We simply register handler functions for our chosen route patterns on the `matchit` router instance.
+
+These lambdas then return the value we wish to receive from the app routers signal.
 
 ```rust,no_run,noplayground
 {{#include ../doc-imports/src/techniques_and_patterns/routing.rs:matchit_routing}}

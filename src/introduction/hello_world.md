@@ -34,6 +34,12 @@ This instructs `wasm_bindgen` to generate code such that the function will be ca
 The `append_dom` function from dominator lets us attach a dom node to an existing DOM node.
 In this case, we use the `body` utility function to get a reference to the `body` node, and attach the `h1` node we create to it.
 
+When executed in the browser, the hello world example above inserts the following DOM structure into the `body` element:
+
+```html,no_run,noplayground
+{{#include ../doc-imports/src/introduction/hello_world.rs:first_main_dom}}
+```
+
 ## Get used to the html! macro
 
 The `html!` macro from dominator will be our main tool for constructing dom HTML nodes.
@@ -45,6 +51,16 @@ Don't worry about understanding all the details of this just yet!
 Let's just agree on a name for referencing the block containing chained method calls; the `method_block`.
 
 For now, be content to know that calling `.text()` within the block we pass to the macro will create a text node with the provided static text content!
+
+## Adding child elements
+
+To create any useful dom structures, we have to be able to create child elements on our nodes.
+There are a few methods for doing this on the DomBuilder:
+
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/introduction/hello_world.rs:child}}
+```
 
 ## How it works
 

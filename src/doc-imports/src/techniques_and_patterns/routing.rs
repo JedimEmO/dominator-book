@@ -195,6 +195,8 @@ impl<TValue> AppRouter<TValue> where TValue: Default {
 fn route_example() {
 // ANCHOR: matchit_routing
 let mut router = matchit::Router::<Box<dyn Fn(Params) -> Result<ShopRoutes, ()>>>::new();
+
+// Configure a callback on the router for matching a certain route, and convert it to our application enum type
 router.insert("#/shop/:id", Box::new(|params: Params| {
     let item_id = params.get("id").ok_or_else(|| ())?;
 
