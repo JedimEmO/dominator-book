@@ -21,6 +21,7 @@ dependencies = [
  "dominator",
  "futures-signals",
  "wasm-bindgen",
+ "wasm-bindgen-futures",
 ]
 
 [[package]]

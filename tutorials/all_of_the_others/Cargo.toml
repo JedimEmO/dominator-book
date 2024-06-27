@@ -14,6 +14,7 @@ dmat-components.workspace = true
 dominator.workspace = true
 futures-signals.workspace = true
 wasm-bindgen.workspace = true
+wasm-bindgen-futures.workspace = true
 
 [build-dependencies]
 dmat-components-style.workspace = true
