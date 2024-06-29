@@ -3,3 +3,4 @@ extern crate log;
 
 pub mod introduction;
 pub mod techniques_and_patterns;
+pub mod design_essays;

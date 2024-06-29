@@ -2,6 +2,7 @@ import rust from "@wasm-tool/rollup-plugin-rust";
 import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
+import fg from 'fast-glob';
 
 const is_watch = !!process.env.ROLLUP_WATCH;
 
@@ -25,5 +26,15 @@ export default {
         }),
         is_watch && livereload("dist"),
         !is_watch && terser(),
+        {
+            name: 'watch-external',
+            async buildStart(){
+                const files = await fg('../../src/doc-imports/src/**/*.rs');
+                for(let file of files){
+                    this.addWatchFile(file);
+                }
+            }
+        },
+
     ],
 };

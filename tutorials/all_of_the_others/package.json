@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@wasm-tool/rollup-plugin-rust": "^2.4.5",
+    "fast-glob": "^3.3.2",
     "rimraf": "^5.0.0",
     "rollup": "^3.21.0",
     "rollup-plugin-livereload": "^2.0.0",

@@ -11,6 +11,10 @@
 - [Async and Futures](introduction/futures.md)
 - [Advanced Element Construction](introduction/advanced_element_construction.md)
 
+# Design essays
+
+- [An SVG audio mixer slider](design_essays/audio_slider.md)
+
 # Techniques and Patterns
 
 - [Mixins](techniques_and_patterns/mixins.md)
