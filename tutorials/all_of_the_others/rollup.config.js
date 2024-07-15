@@ -18,7 +18,9 @@ export default {
     plugins: [
         rust({
             serverPath: "js/",
-            debug: true
+            debug: true,
+            cargoArgs: ["--config", "profile.dev.debug=true"],
+            wasmBindgenArgs: ["--debug", "--keep-debug"]
         }),
         is_watch && serve({
             contentBase: "dist",

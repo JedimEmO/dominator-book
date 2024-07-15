@@ -29,7 +29,7 @@ Note how we create a `web_sys::Url` from the route string.
 This gives some utility, for our case we mostly care about the `hash()` method to make matching on relative URLs easier.
 
 ## The route enum 
-
+[..](..)
 The above example may be all we need for a simple application, but there are also cases were we wish to avoid directly hard coding route strings all over our application code.
 There are several ways of solving this, one of which is to model the route states as rust enums.
 We can then write perfectly type-safe routing code, and it also gives us a very structured model of the possible application states!

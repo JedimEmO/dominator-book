@@ -197,7 +197,7 @@ fn route_example() {
 let mut router = matchit::Router::<Box<dyn Fn(Params) -> Result<ShopRoutes, ()>>>::new();
 
 // Configure a callback on the router for matching a certain route, and convert it to our application enum type
-router.insert("#/shop/:id", Box::new(|params: Params| {
+router.insert("#/shop/{id}", Box::new(|params: Params| {
     let item_id = params.get("id").ok_or_else(|| ())?;
 
     Ok(ShopRoutes::Shop { display_item_id: Some(item_id.to_string()) })
