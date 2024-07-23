@@ -5,7 +5,7 @@ use futures_signals::signal::Mutable;
 use wasm_bindgen_futures::spawn_local;
 
 #[derive(Debug)]
-struct ItemInfo;
+pub struct ItemInfo;
 
 // ANCHOR: trait
 pub trait ItemRepository {

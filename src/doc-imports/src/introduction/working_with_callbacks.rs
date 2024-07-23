@@ -66,7 +66,7 @@ pub fn my_shared_button_factory(
     let on_click = Arc::new(Mutex::new(on_click));
     html!("div", {
         .child_signal(val.signal().map(clone!(on_click => move |v| {
-            let mut on_click = on_click.clone();
+            let on_click = on_click.clone();
             
             Some(html!("button", {
                 .event(move |_: events::Click| {

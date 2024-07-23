@@ -21,3 +21,4 @@
 - [Fragments](techniques_and_patterns/fragments.md)
 - [Routing](techniques_and_patterns/routing.md)
 - [Logging and Debugging](techniques_and_patterns/logging_and_debugging.md)
+- [In-browser Testing](techniques_and_patterns/testing.md)

@@ -4,13 +4,15 @@ dominator = "0.5.34"
 dmat-components = { git = "https://github.com/JedimEmO/dmat.git" }
 dmat-components-style = { git = "https://github.com/JedimEmO/dmat.git" }
 futures-signals = "0.3.33"
+js-sys = "0.3.69"
 log = "0.4.20"
 matchit = "0.7.3"
 regex = "1.10.2"
 wasm-bindgen = "0.2.89"
 wasm-bindgen-futures = "0.4.42"
+wasm-bindgen-test = "0.3.42"
 wasm-logger = "0.2.0"
-web-sys = { version = "0.3", features = ["HtmlElement", "Url", "Event"] }
+web-sys = { version = "0.3", features = ["Document", "HtmlElement", "HtmlCollection", "Url", "Event", "DomRect", "Element"] }
 
 [workspace]
 resolver = "2"
