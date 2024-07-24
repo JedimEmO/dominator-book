@@ -35,7 +35,9 @@ mod in_browser_tests {
     async fn some_dom_test() {
         let cmp_to_test = my_cmp();
 
-        dominator::append_dom(&dominator::body(), cmp_to_test);
+        // Make sure to replace the current body content, to avoid
+        // multiple tests contaminating each other
+        dominator::replace_dom(&dominator::body(), &dominator::body().first_child().unwrap(), cmp_to_test);
 
         let button = web_sys::window().unwrap()
             .document().unwrap()
