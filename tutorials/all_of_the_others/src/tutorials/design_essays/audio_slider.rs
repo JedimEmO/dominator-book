@@ -1,5 +1,5 @@
 use doc_imports::design_essays::audio_slider::initial_design_final::audio_slider;
-use dominator::{clone, Dom, events, html};
+use dominator::{clone, events, html, Dom};
 use futures_signals::signal::{Mutable, SignalExt};
 
 pub fn audio_slider_page() -> Dom {

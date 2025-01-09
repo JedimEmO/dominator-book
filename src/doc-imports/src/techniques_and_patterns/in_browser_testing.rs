@@ -1,5 +1,5 @@
 // ANCHOR: test
-use dominator::{clone, Dom, events, html};
+use dominator::{clone, events, html, Dom};
 use futures_signals::signal::{Mutable, SignalExt};
 
 pub fn my_cmp() -> Dom {
@@ -24,12 +24,12 @@ pub fn my_cmp() -> Dom {
 }
 #[cfg(test)]
 mod in_browser_tests {
+    use crate::techniques_and_patterns::in_browser_testing::my_cmp;
     use futures_signals::signal::{Mutable, SignalExt};
     use wasm_bindgen::{JsCast, JsValue};
     use wasm_bindgen_futures::JsFuture;
     use wasm_bindgen_test::wasm_bindgen_test;
     use web_sys::HtmlElement;
-    use crate::techniques_and_patterns::in_browser_testing::my_cmp;
 
     #[wasm_bindgen_test]
     async fn some_dom_test() {
@@ -37,11 +37,18 @@ mod in_browser_tests {
 
         // Make sure to replace the current body content, to avoid
         // multiple tests contaminating each other
-        dominator::replace_dom(&dominator::body(), &dominator::body().first_child().unwrap(), cmp_to_test);
+        dominator::replace_dom(
+            &dominator::body(),
+            &dominator::body().first_child().unwrap(),
+            cmp_to_test,
+        );
 
-        let button = web_sys::window().unwrap()
-            .document().unwrap()
-            .get_element_by_id("click-me").unwrap();
+        let button = web_sys::window()
+            .unwrap()
+            .document()
+            .unwrap()
+            .get_element_by_id("click-me")
+            .unwrap();
 
         let button_ref = button.dyn_ref::<HtmlElement>().unwrap();
 
@@ -56,10 +63,11 @@ mod in_browser_tests {
             .unwrap();
 
         // Verify the resulting dom:
-        let count_mes = web_sys::window().unwrap()
-            .document().unwrap()
+        let count_mes = web_sys::window()
+            .unwrap()
+            .document()
+            .unwrap()
             .get_elements_by_class_name("count-me");
-
 
         assert_eq!(count_mes.length(), 3);
     }

@@ -1,4 +1,4 @@
-use dominator::{Dom, html};
+use dominator::{html, Dom};
 
 #[rustfmt::skip]
 #[cfg(not(target_arch = "wasm32"))]

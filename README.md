@@ -7,8 +7,9 @@ It is still work in progress, but should hopefully give at least some value for 
 
 ## Following the tutorials
 
-To run the tutorials, you will need `nvm` and the rust toolchain with the `wasm32-unknown-unknown` target installed.
+To run the tutorials, you will need either `trunk` or `nvm`, and the rust toolchain with the `wasm32-unknown-unknown` target installed.
 
+To install trunk, follow the instructions here: https://trunkrs.dev/guide/getting-started/installation.html
 To install NVM, follow the instructions here: https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script
 
 To install rust and the wasm32 target, first install the rust compiler following the instructions at https://www.rustup.rs.
@@ -21,9 +22,21 @@ rustup target add wasm32-unknown-unknown
 
 When you have your dependencies installed, go to the tutorial folder under `tutorials` that you wish to run, and do the following:
 
+```shell
+trunk serve --open
 ```
+
+or if you want to get debug symbols in the browser: 
+
+```shell
+trunk serve index.debug.html --open
+```
+
+If you wish to use the rollup plugin with npm, do the following instead:
+
+```shell
 nvm i & nvm use
-npm i && npm start
+npm i && npm start --open
 ```
 
 This should open a browser window with the correct tutorial.

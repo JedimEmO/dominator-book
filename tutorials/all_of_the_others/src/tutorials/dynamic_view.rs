@@ -1,4 +1,5 @@
-use dominator::{clone, events, html, Dom};
+use dominator::{clone, events, html, text, Dom};
+use dwui::prelude::*;
 use futures_signals::signal::Mutable;
 use futures_signals::signal::SignalExt;
 
@@ -10,7 +11,15 @@ pub fn dynamic_view() -> Dom {
     };
 
     html!("div", {
+        .child(heading!({
+            .content(text("As a function component:"))
+            .text_size(TextSize::Large)
+        }))
         .child(counter(counter_data.clone()))
+        .child(heading!({
+            .content(text("As a struct component:"))
+            .text_size(TextSize::Large)
+        }))
         .child(new_counter.render())
     })
 }

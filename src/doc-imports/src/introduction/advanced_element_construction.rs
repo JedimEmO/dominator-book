@@ -1,4 +1,4 @@
-use dominator::{clone, html, with_node, Dom, fragment};
+use dominator::{clone, fragment, html, with_node, Dom};
 use futures_signals::signal::{always, Signal, SignalExt};
 use futures_signals::signal_vec::{MutableVec, SignalVecExt};
 use wasm_bindgen::UnwrapThrowExt;
@@ -24,6 +24,7 @@ fn with_node_example(blur_signal: impl Signal<Item = ()> + 'static) -> Dom {
 
 #[rustfmt::skip]
 fn multinode_example() -> Dom {
+    let _ =
 // ANCHOR: multinode
 html!("div", {
     .child(html!("span", { .text("first child") }))

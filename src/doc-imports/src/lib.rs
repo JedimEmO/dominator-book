@@ -5,9 +5,9 @@
 #[macro_use]
 extern crate log;
 
+pub mod design_essays;
 pub mod introduction;
 pub mod techniques_and_patterns;
-pub mod design_essays;
 
 #[cfg(test)]
 use wasm_bindgen_test::wasm_bindgen_test_configure;

@@ -1,7 +1,7 @@
-use std::fmt::Display;
 use dominator::routing::{go_to_url, url};
-use futures_signals::signal::{Mutable, Signal, SignalExt};
+use futures_signals::signal::{Signal, SignalExt};
 use futures_signals::signal_vec::MutableVec;
+use std::fmt::Display;
 use wasm_bindgen::UnwrapThrowExt;
 
 #[derive(Copy, Clone, Eq, PartialEq)]
@@ -15,7 +15,8 @@ impl Tutorial {
         match self {
             Self::DynamicView => "#/dynamic_view",
             Self::DesignEssays => "#/design_essays",
-        }.to_string()
+        }
+        .to_string()
     }
 }
 
@@ -25,7 +26,7 @@ impl Display for Tutorial {
             Tutorial::DynamicView => "Dynamic View",
             Tutorial::DesignEssays => "Design Essays",
         }
-            .to_string();
+        .to_string();
         write!(f, "{}", str)
     }
 }
@@ -39,8 +40,8 @@ impl TutorialStore {
         Self {
             tutorials: MutableVec::new_with_values(vec![
                 Tutorial::DynamicView,
-                Tutorial::DesignEssays
-            ])
+                Tutorial::DesignEssays,
+            ]),
         }
     }
 
@@ -53,18 +54,22 @@ impl TutorialStore {
         let tutorials = self.tutorials.clone();
 
         self.current_tutorial_signal().map(move |current_tutorial| {
-            tutorials.lock_ref().iter().position(|v| v == &current_tutorial).unwrap()
+            tutorials
+                .lock_ref()
+                .iter()
+                .position(|v| v == &current_tutorial)
+                .unwrap()
         })
     }
 
     pub fn current_tutorial_signal(&self) -> impl Signal<Item = Tutorial> {
         url().signal_ref(move |new_url| {
-            let url = web_sys::Url::new(new_url.as_str())
-                .expect_throw("failed to construct url path");
+            let url =
+                web_sys::Url::new(new_url.as_str()).expect_throw("failed to construct url path");
 
             match url.hash().as_str() {
                 "#/design_essays" => Tutorial::DesignEssays,
-                _ => Tutorial::DynamicView
+                _ => Tutorial::DynamicView,
             }
         })
     }

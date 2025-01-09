@@ -9,14 +9,13 @@ crate-type = ["cdylib"]
 
 [dependencies]
 doc-imports = { path = "../../src/doc-imports" }
-
-dmat-components.workspace = true
 dominator.workspace = true
+dwind.workspace = true
+dwind-macros.workspace = true
+dwui.workspace = true
 futures-signals.workspace = true
 log.workspace = true
 wasm-bindgen.workspace = true
 wasm-bindgen-futures.workspace = true
 web-sys.workspace = true
 wasm-logger = "0.2.0"
-[build-dependencies]
-dmat-components-style.workspace = true

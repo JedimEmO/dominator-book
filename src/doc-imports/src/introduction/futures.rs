@@ -1,7 +1,7 @@
-use uuid::Uuid;
 use anyhow::Result;
-use dominator::{clone, Dom, events, html};
+use dominator::{clone, events, html, Dom};
 use futures_signals::signal::Mutable;
+use uuid::Uuid;
 use wasm_bindgen_futures::spawn_local;
 
 #[derive(Debug)]
