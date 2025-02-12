@@ -78,3 +78,7 @@ The read only mutable contains the index of each element, so this behaves simila
 
 The reason the index is a mutable rather than just a number is that when reordering or removing elements in a vector,
 we can get a signal to the changed index (or lack thereof) for each element.
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/introduction/mutable_collections.rs:enumerate}}
+```

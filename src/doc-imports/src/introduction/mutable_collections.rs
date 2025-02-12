@@ -86,9 +86,21 @@ fn conversion() {
 }
 // ANCHOR_END: signal_conversion
 
+#[rustfmt::skip]
 fn enumerate() {
-    let data = MutableVec::new_with_values(vec![1, 2, 3]);
-    data.signal_vec()
-        .enumerate()
-        .map(|(index, value): (ReadOnlyMutable<Option<usize>>, i32)| {});
+// ANCHOR: enumerate
+let data = MutableVec::new_with_values(vec![1, 2, 3]);
+data.signal_vec()
+    .enumerate()
+    .map(|(index, value): (ReadOnlyMutable<Option<usize>>, i32)| {
+        html!("div", {
+            .text_signal(index.signal_ref(|idx| {
+                match idx {
+                    Some(idx) => format!("I am at index {idx}"),
+                    _ => format!("I am removed!")
+                }
+            }))
+        })
+});
+// ANCHOR_END: enumerate
 }
