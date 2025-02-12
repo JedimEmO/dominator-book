@@ -13,8 +13,8 @@ This is perhaps ok for very small vectors, but it is a big performance hit when 
 since it will cause massive unnecessary layout recalculations.
 
 But we can do better.
-In fact, we can achieve near perfect granularity when updating the dom by using `MutableVec` and its associated
-`MutableVecSignal`.
+In fact, we can achieve near perfect granularity when updating the dom by using `MutableVec<T>` and the associated
+`SignalVec<Item=T>`.
 
 ```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/mutable_collections.rs:mut_vec}}
@@ -23,6 +23,11 @@ In fact, we can achieve near perfect granularity when updating the dom by using 
 As you see in the latter example, we can change individual elements of a vec.
 This propagates through the `SignalVec` we get from the `MutableVec` instance by simply forwarding the diff produced by
 the mutation.
+
+Notice how the `DomBuilder` has a `children_signal_vec()` method.
+This accepts a `SignalVec<Dom>`, and will ensure optimal DOM updates based on the changes to the signal.
+
+It's the signal counterpart to the `.children()` method we saw in the introductory chapter!
 
 This means we can map the `SignalVec` on a per-element basis, and dominator in turn can optimally update only the parts
 of the DOM that require changing as a result of a diff!
