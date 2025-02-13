@@ -8,6 +8,7 @@
 - [Hello, world!](introduction/hello_world.md)
 - [Mutable values and a dynamic view](introduction/dynamic_view.md)
 - [Mutable vectors](introduction/mutable_vectors.md)
+- [Mutable maps](introduction/mutable_map.md)
 - [Working with callbacks](introduction/working_with_callbacks.md)
 - [Async and Futures](introduction/futures.md)
 - [Advanced Element Construction](introduction/advanced_element_construction.md)
