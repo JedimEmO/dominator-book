@@ -1,4 +1,5 @@
 use dominator::{html, Dom, DomBuilder};
+use futures_signals::signal::SignalExt;
 use futures_signals::signal_map::{MutableBTreeMap, SignalMapExt};
 use futures_signals::signal_vec::SignalVecExt;
 use web_sys::HtmlElement;

@@ -3,10 +3,8 @@
   "name": "dominator-tutorials-all-of-the-others",
   "version": "0.1.0",
   "scripts": {
-    "build": "rimraf dist/js && npm run css && rollup --bundleConfigAsCjs --config",
-    "start": "rimraf dist/js && npm run css && rollup --bundleConfigAsCjs --config --watch",
-    "start:css": "sass style:dist/style --watch",
-    "css": "sass style:dist/style && cp -r images dist"
+    "build": "rimraf dist/js && rollup --bundleConfigAsCjs --config",
+    "start": "rimraf dist/js && rollup --bundleConfigAsCjs --config --watch"
   },
   "devDependencies": {
     "@wasm-tool/rollup-plugin-rust": "^2.4.5",
