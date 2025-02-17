@@ -1,5 +1,5 @@
 use dominator::{html, Dom, DomBuilder};
-use futures_signals::signal::SignalExt;
+use futures_signals::signal::{Mutable, SignalExt};
 use futures_signals::signal_map::{MutableBTreeMap, SignalMapExt};
 use futures_signals::signal_vec::SignalVecExt;
 use web_sys::HtmlElement;
@@ -51,4 +51,25 @@ html!("div", {
     .text_signal(key_signal)
 })
 // ANCHOR_END: mutable_map_key_cloned
+}
+
+#[rustfmt::skip]
+fn mutable_map_example_signal_value() -> Dom {
+// ANCHOR: mutable_map_value_signal
+// A map with mutable values
+let mutable_map: MutableBTreeMap<&str, Mutable<String>> = MutableBTreeMap::new();
+
+// Get a map signal that updates both when keys and their corresponding value signal changes
+let key_signal = mutable_map
+    .signal_map_cloned()
+    .map_value_signal(|value: Mutable<String>| value.signal_cloned())
+    .key_cloned("some-key")
+    .map(|v| {
+        v.unwrap_or("no-value".to_string())
+});
+
+html!("div", {
+    .text_signal(key_signal)
+})
+// ANCHOR_END: mutable_map_value_signal
 }

@@ -28,3 +28,16 @@ insert into the dom as text.
 ```rust,no_run,noplayground
 {{#include ../doc-imports/src/introduction/mutable_map.rs:mutable_map_key_cloned}}
 ```
+
+## Maps of mutables
+
+Sometimes, you have a mutable map that holds mutable values.
+In those cases, you'll may wish to get a signal that covers both entries changing in the map,
+and when their corresponding values change.
+
+For this, you can use 'map_value_signal()'.
+It allows you to essentially flatten the map_signal and a signal derived from the values of the elements!
+
+```rust,no_run,noplayground
+{{#include ../doc-imports/src/introduction/mutable_map.rs:mutable_map_value_signal}}
+```
